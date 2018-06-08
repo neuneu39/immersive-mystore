@@ -11,7 +11,7 @@ router.get('/', async (req, res, next) => {
     connection = await db.getConnection();
     console.log("connected")
     // 接続に対してクエリを発行する
-    const [rows, fields] = connection.query('select * from items');
+    const [rows, fields] = await connection.query('select * from items');
     // 戻り値をjsonとしてレスポンスを返す
     res.json(rows);
     console.log(res.json(rows));
