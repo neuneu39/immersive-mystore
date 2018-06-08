@@ -8,7 +8,6 @@ const app = express();
 app.use(bodyParser.json());
 
 // TODO add routes ----
-
 app.use('/api/items', itemsRoute);
 
 // --------------------
