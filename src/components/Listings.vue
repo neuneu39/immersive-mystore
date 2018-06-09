@@ -1,13 +1,16 @@
 <template>
   <div class="homepage">
-    <h1>Items</h1>
-    <!-- {{items}} -->
+    <h1>My Store</h1>
     <div class="item-table">
       <div class="item-list" v-for="(item, idx) in items"  v-bind:key="idx">
-        Name:{{item.name}}  Price:{{item.price}}
-        <img class="images" v-bind:src="item.image_url"/>
+        <img class="images" v-bind:src="item.image_url" v-bind:alt="'image' + idx"/>
+        <div class="item-info">
+          <p class="item-name">{{item.name}}</p>
+          <p class="item-price">{{item.price}}</p>
+        </div>
       </div>
     </div>
+    <p>  <router-link to="/Admin">Go to Admin</router-link> </p>
     <!-- TODO: Add Item List -->
   </div>
 </template>
