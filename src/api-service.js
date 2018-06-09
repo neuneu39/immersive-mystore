@@ -7,12 +7,15 @@
 */
 
 function getItemInformation() {
-  return fetch('http://localhost:8080/api/items')
-    .then(res => res.json())
-    .then(json => {
-      console.log(json);
-      return json;
-    });
+  const optional = {
+    method: 'GET'
+  };
+  return fetch('/api/items', optional)
+    .then(res => res.json());
+    // .then(json => {
+    //   console.log(json);
+    //   return json;
+    //});
 }
 
 export default {

@@ -2,16 +2,12 @@
   <div class="homepage">
     <h1>Items</h1>
     <!-- {{items}} -->
-    <ol>
-      <div v-for="(item, idx) in items"  v-bind:key="idx">
-        <div> 
-          {{item.name}}
-          {{item.price}}
-          <img class="images" v-bind:src="item.image_url"/>
-        </div>
+    <div class="item-table">
+      <div class="item-list" v-for="(item, idx) in items"  v-bind:key="idx">
+        Name:{{item.name}}  Price:{{item.price}}
+        <img class="images" v-bind:src="item.image_url"/>
       </div>
-    </ol>
-
+    </div>
     <!-- TODO: Add Item List -->
   </div>
 </template>
@@ -23,16 +19,13 @@ export default {
   name: 'Homepage',
   data() {
     return {
-      name: "item1",
-      price: "100",
-      imageUrl: "http://",
       items: [],
     };
   },
   mounted() {
     apiService.getItemInformation()
       .then( json => {
-        console.log(json);
+        console.log('items= ', json);
         this.items = json;
       });
     }
@@ -44,5 +37,12 @@ export default {
 .images {
   width: 160px;
   height: 160px;
+}
+.item-table {
+  width: 100%;  
+}
+.item-list {
+  display: flex;
+  justify-content: space-between;
 }
 </style>
