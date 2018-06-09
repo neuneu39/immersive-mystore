@@ -14,5 +14,5 @@
 * Like the last sprint, create an api-service for a function that gets items from the server
   * Implement the function that gets items from the server
 * Render the items as a list onto the page for the Listings component.
-  * Make sure every item has a `title`, `price`, and `image`
+  * Make sure every item has a `name`, `price`, and `image` #make image tag
 * Add basic styling
