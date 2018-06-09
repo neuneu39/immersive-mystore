@@ -1,9 +1,9 @@
 <template>
   <div class="homepage">
     <h1>My Store</h1>
-    <div class="item-table">
-      <div class="item-list" v-for="(item, idx) in items"  v-bind:key="idx">
-        <img class="images" v-bind:src="item.image_url" v-bind:alt="'image' + idx"/>
+    <div class="item-list">
+      <div class="item" v-for="(item, idx) in items"  v-bind:key="idx">
+        <img class="item-img" v-bind:src="item.image_url" v-bind:alt="'image' + idx"/>
         <div class="item-info">
           <p class="item-name">{{item.name}}</p>
           <p class="item-price">{{item.price}}</p>
@@ -37,15 +37,32 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.images {
-  width: 160px;
-  height: 160px;
-}
-.item-table {
-  width: 100%;  
-}
 .item-list {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  align-items: stretch;
+}
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin: 5px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  width: 150px;
+}
+.item img {
+  padding: 10px;
+}
+.item-img {
+  /* width: 150px;
+  height: auto; */
+  width: 100%;
+  height: auto;
+}
+.item-name,
+.item-price {
+  margin: 0;
 }
 </style>

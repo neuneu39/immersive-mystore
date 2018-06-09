@@ -12,10 +12,6 @@ function getItemInformation() {
   };
   return fetch('/api/items', optional)
     .then(res => res.json());
-    // .then(json => {
-    //   console.log(json);
-    //   return json;
-    //});
 }
 
 export default {
