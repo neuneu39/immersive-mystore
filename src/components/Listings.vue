@@ -1,7 +1,17 @@
 <template>
   <div class="homepage">
     <h1>Items</h1>
-    {{name}}
+    <!-- {{items}} -->
+    <ol>
+      <li 
+      v-for="(item, idx) in items"
+      v-bind:key="idx"
+      v-bind:name="item.name"
+      v-bind:price="item.price"
+      >{{item.name}}
+      {{item.price}}</li>
+    </ol>
+
     <!-- TODO: Add Item List -->
   </div>
 </template>
@@ -15,12 +25,17 @@ export default {
     return {
       name: "item1",
       price: "100",
-      image_url: "http://",
+      imageUrl: "http://",
+      items: [],
     };
   },
-  methods: {
-    
-  },
+  mounted() {
+    apiService.getItemInformation()
+      .then( json => {
+        console.log(json);
+        this.items = json;
+      });
+    }
 };
 </script>
 

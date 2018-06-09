@@ -8,6 +8,13 @@
 
 function getItemInformation() {
   return fetch('http://localhost:8080/api/items')
-    .then(res => res.json()) 
-    .then(json => console.log(json));
+    .then(res => res.json())
+    .then(json => {
+      console.log(json);
+      return json;
+    });
+}
+
+export default {
+  getItemInformation,
 }
