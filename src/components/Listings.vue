@@ -3,13 +3,13 @@
     <h1>Items</h1>
     <!-- {{items}} -->
     <ol>
-      <li 
-      v-for="(item, idx) in items"
-      v-bind:key="idx"
-      v-bind:name="item.name"
-      v-bind:price="item.price"
-      >{{item.name}}
-      {{item.price}}</li>
+      <div v-for="(item, idx) in items"  v-bind:key="idx">
+        <div> 
+          {{item.name}}
+          {{item.price}}
+          <img class="images" v-bind:src="item.image_url"/>
+        </div>
+      </div>
     </ol>
 
     <!-- TODO: Add Item List -->
@@ -37,9 +37,12 @@ export default {
       });
     }
 };
-</script>
+</script>>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.images {
+  width: 160px;
+  height: 160px;
+}
 </style>
