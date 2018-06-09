@@ -1,6 +1,7 @@
 <template>
   <div class="homepage">
     <h1>Items</h1>
+    {{name}}
     <!-- TODO: Add Item List -->
   </div>
 </template>
@@ -12,7 +13,9 @@ export default {
   name: 'Homepage',
   data() {
     return {
-
+      name: "item1",
+      price: "100",
+      image_url: "http://",
     };
   },
   methods: {

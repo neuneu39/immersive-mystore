@@ -6,10 +6,10 @@
 </template>
 
 <script>
-import apiService from '../api-service';
+//import apiService from '../api-service';
 
 export default {
-  name: 'Account',
+  name: 'Admin',
   data() {
     return {
 
