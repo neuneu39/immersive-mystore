@@ -13,6 +13,11 @@ export default {
       headers: { 'content-type': 'application/json' },
     };
     return fetch('/api/items', options)
-      .then(response => response.json());
-  }
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Error in POST /api/items");
+        }
+        return response.json();
+      })
+  },
 };
