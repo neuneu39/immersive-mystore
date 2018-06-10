@@ -27,6 +27,28 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   const { name, price, imageUrl } = req.body;
+  try {
+    // DBの接続を取得する
+    connection = await db.getConnection();
+    // 接続に対してクエリを発行する
+    // see: https://github.com/sidorares/node-mysql2
+    //const [rows/* , fields */] = await connection.query('select id, name, price, image_url from items');
+    const [rows] = await connection.query(
+      'insert into `my_table_name` (`name`, `price`, `imageUrl`) values (?, ?, ?)'
+    );
+    //INSERT INTO `my_table_name` (`name`, `price`) VALUES ('Item 1', 100);
+    // 戻り値をjsonとしてレスポンスを返す
+    res.json(rows);
+  } catch (err) {
+    // console.log('*** catch ***'); クエリをエラーにしてコメントを外すと出力される
+    next(err);
+  } finally {
+    // console.log('*** finally ***'); コメントを外すと処理の成否に関わらず出力される
+    // DBの接続は閉じること
+    if (connection) {
+      connection.close();
+    }
+  }
 
   res.json({name, price, imageUrl, received: true});
 });

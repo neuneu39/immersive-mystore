@@ -26,7 +26,10 @@ export default {
   methods: {
     addItem: function(evt) {
       evt.preventDefault();
-      console.log(this.name, this.price, this.imageUrl);
+      apiService.addItems(JSON.stringify({name: this.name, price: this.price, imageUrl: this.imageUrl}))
+        .then(json => console.log('json==', json));
+
+      //console.log(this.name, this.price, this.imageUrl);
       // TODO: Save data in server using API
     }
   },
