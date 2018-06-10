@@ -1,6 +1,7 @@
 <template>
   <div class="homepage">
     <h1>Add Item</h1>
+    <h2>{{this.Message}}</h2>
     <p>See the <router-link to="/">Store</router-link></p>
     <form v-on:submit="addItem">
       <input v-model="name" placeholder="Item Name" />
@@ -21,6 +22,7 @@ export default {
       name: '',
       price: '',
       imageUrl: '',
+      Message: '',
     };
   },
   methods: {
@@ -33,10 +35,25 @@ export default {
           imageUrl: this.imageUrl
         })
       )
-      .then(json => console.log('json==', json));
-
+      .then(() => {
+        this.setMessage('Item Added');
+        this.setTimer();
+      })
+      .catch( e => {
+        console.log('error saving account. e = ', e);
+        this.setMessage('There was an error adding your item');
+        this.setTimer();
+      });
       //console.log(this.name, this.price, this.imageUrl);
       // TODO: Save data in server using API
+    },
+    setMessage: function(message) {
+      this.Message = message;
+    },
+    setTimer: function() {
+      setTimeout( () => {
+        this.Message = '';
+      },3000 );
     }
   },
   // SPAのSEO対策?
