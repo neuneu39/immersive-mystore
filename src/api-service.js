@@ -13,5 +13,6 @@ export default {
       headers: { 'content-type': 'application/json' },
     };
     return fetch('/api/items', options)
+      .then(response => response.json());
   }
 };
