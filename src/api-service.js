@@ -6,7 +6,7 @@ export default {
     return fetch('/api/items', options)
       .then(response => response.json());
   },
-  addItems: (jsonBody) => {
+  createItems: (jsonBody) => {
     const options = {
       method: 'POST',
       body: jsonBody,

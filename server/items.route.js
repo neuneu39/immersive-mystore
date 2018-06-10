@@ -27,6 +27,7 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   const { name, price, imageUrl } = req.body;
+  let connection;
   try {
     // DBの接続を取得する
     connection = await db.getConnection();

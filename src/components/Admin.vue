@@ -26,7 +26,7 @@ export default {
   methods: {
     addItem: function(evt) {
       evt.preventDefault();
-      apiService.addItems(
+      apiService.createItems(
         JSON.stringify({
           name: this.name, 
           price: this.price, 
